@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="id" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List Life Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- ==================== HEADER ==================== -->
+    <!-- Header berisi tombol toggle tema terang/gelap -->
+    <header class="app-header">
+      <button id="theme-toggle" aria-label="Toggle tema terang/gelap">☀️</button>
+    </header>
+
+    <!-- ==================== GREETING WIDGET ==================== -->
+    <!-- Widget sapaan: menampilkan tanggal, jam, sapaan dinamis, dan nama pengguna -->
+    <section id="greeting-widget" class="widget">
+
+      <!-- Baris sapaan: "Selamat Pagi, [Nama]" -->
+      <div id="greeting-text">
+        Selamat Pagi, <span id="user-name">Pengguna</span>
+      </div>
+    
+      <!-- Tombol untuk mengaktifkan mode edit nama -->
+      <button id="edit-name-btn" aria-label="Ubah nama pengguna">✏️</button>
+
+      <!-- Form edit nama: tersembunyi (hidden) sampai tombol ✏️ diklik -->
+      <div id="edit-name-form" hidden>
+        <input
+          type="text"
+          id="name-input"
+          placeholder="Masukkan nama Anda..."
+          aria-label="Input nama pengguna"
+        />
+        <button id="save-name-btn" aria-label="Simpan nama baru">Simpan</button>
+        <button id="cancel-name-btn" aria-label="Batalkan perubahan nama">Batal</button>
+      </div>
+
+      <!-- Tampilan tanggal: diisi oleh JavaScript, contoh: "Senin, 26 Mei 2025" -->
+      <div id="current-date"></div>
+
+      <!-- Tampilan jam real-time: diisi oleh JavaScript, contoh: "08:30:00" -->
+      <div id="current-time"></div>
+
+    </section>
+
+    <!-- ==================== DASHBOARD GRID ==================== -->
+    <!-- Grid dua kolom (desktop) atau satu kolom (mobile) -->
+    <main class="dashboard-grid">
+
+      <!-- ===== TO-DO LIST WIDGET ===== -->
+      <section id="todo-widget" class="widget">
+        <h2>To-Do List</h2>
+
+        <!-- Area input tambah tugas baru -->
+        <div class="todo-input-area">
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="Tambah tugas baru..."
+            aria-label="Input tugas baru"
+          />
+          <button id="todo-add-btn" aria-label="Tambah tugas">+</button>
+        </div>
+
+        <!-- Pesan peringatan validasi (kosong/duplikat): tersembunyi secara default -->
+        <p id="todo-warning" class="warning-message" hidden></p>
+
+        <!-- Daftar tugas: diisi oleh JavaScript -->
+        <ul id="todo-list" aria-label="Daftar tugas"></ul>
+      </section>
+
+      <!-- ===== POMODORO TIMER WIDGET ===== -->
+      <section id="pomodoro-widget" class="widget">
+        <h2>Pomodoro Timer</h2>
+
+        <!-- Tampilan hitungan mundur: diperbarui oleh JavaScript -->
+        <div id="pomodoro-display" aria-live="polite" aria-label="Sisa waktu timer">25:00</div>
+
+        <!-- Pesan sesi selesai: tersembunyi sampai timer mencapai 00:00 -->
+        <p id="pomodoro-done-msg" hidden aria-live="polite">Sesi selesai! 🎉</p>
+
+        <!-- Tombol kontrol timer -->
+        <div class="pomodoro-controls">
+          <button id="pomodoro-start" aria-label="Mulai timer">Start</button>
+          <button id="pomodoro-stop" aria-label="Hentikan timer">Stop</button>
+          <button id="pomodoro-reset" aria-label="Reset timer ke 25:00">Reset</button>
+        </div>
+      </section>
+
+      <!-- ===== QUICK LINKS WIDGET ===== -->
+      <section id="quicklinks-widget" class="widget">
+        <h2>Quick Links</h2>
+
+        <!-- Area input tambah tautan baru -->
+        <div class="quicklinks-input-area">
+          <input
+            type="text"
+            id="link-name-input"
+            placeholder="Nama tautan..."
+            aria-label="Nama tautan"
+          />
+          <input
+            type="url"
+            id="link-url-input"
+            placeholder="https://..."
+            aria-label="URL tautan"
+          />
+          <button id="link-add-btn" aria-label="Tambah tautan baru">+</button>
+        </div>
+
+        <!-- Pesan peringatan validasi URL: tersembunyi secara default -->
+        <p id="link-warning" class="warning-message" hidden></p>
+
+        <!-- Daftar tautan: diisi oleh JavaScript -->
+        <ul id="quicklinks-list" aria-label="Daftar tautan favorit"></ul>
+      </section>
+
+    </main>
+
+    <!-- Script JavaScript dimuat SETELAH semua elemen HTML siap -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
